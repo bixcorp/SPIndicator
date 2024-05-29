@@ -184,10 +184,14 @@ open class SPIndicatorView: UIView {
     
     private func setGesture() {
         if dismissByDrag {
-            let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-            addGestureRecognizer(gestureRecognizer)
-            self.gestureRecognizer = gestureRecognizer
+            self.gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+            if let gestureRecognizer = self.gestureRecognizer {
+                self.addGestureRecognizer(gestureRecognizer)
+            }
         } else {
+            if let gestureRecognizer = self.gestureRecognizer {
+                self.removeGestureRecognizer(gestureRecognizer)
+            }
             self.gestureRecognizer = nil
         }
     }
@@ -330,7 +334,7 @@ open class SPIndicatorView: UIView {
         
         let getPrepareTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
             guard let self = self else { return .identity }
-            guard let window = UIApplication.shared.windows.first else { return .identity }
+            guard let window = self.presentWindow else { return .identity }
             switch side {
             case .top:
                 let topInset = window.safeAreaInsets.top
@@ -348,7 +352,7 @@ open class SPIndicatorView: UIView {
         
         let getVisibleTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
             guard let self = self else { return .identity }
-            guard let window = UIApplication.shared.windows.first else { return .identity }
+            guard let window = self.presentWindow else { return .identity }
             switch side {
             case .top:
                 var topSafeAreaInsets = window.safeAreaInsets.top
