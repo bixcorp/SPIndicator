@@ -88,7 +88,7 @@ open class SPIndicatorView: UIView {
     
     // MARK: - Init
     
-    public init(title: String, message: String? = nil, preset: SPIndicatorIconPreset) {
+    public init(title: String, message: String? = nil, preset: SPIndicatorIconPreset, color: UIColor? = nil) {
         super.init(frame: CGRect.zero)
         commonInit()
         layout = SPIndicatorLayout(for: preset)
@@ -96,7 +96,7 @@ open class SPIndicatorView: UIView {
         if let message = message {
             setMessage(message)
         }
-        setIcon(for: preset)
+        setIcon(for: preset, with: color)
     }
     
     public init(title: String, message: String?) {
@@ -165,8 +165,8 @@ open class SPIndicatorView: UIView {
         addSubview(label)
     }
     
-    private func setIcon(for preset: SPIndicatorIconPreset) {
-        let view = preset.createView()
+    private func setIcon(for preset: SPIndicatorIconPreset, with color: UIColor? = nil) {
+        let view = preset.createView(with: color)
         self.iconView = view
         addSubview(view)
     }

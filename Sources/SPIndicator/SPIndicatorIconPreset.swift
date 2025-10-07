@@ -37,7 +37,7 @@ public enum SPIndicatorIconPreset {
 
 public extension SPIndicatorIconPreset {
     
-    func createView() -> UIView {
+    func createView(with color: UIColor? = nil) -> UIView {
         switch self {
         case .done:
             let view = SPIndicatorIconDoneView()
@@ -48,6 +48,7 @@ public extension SPIndicatorIconPreset {
             return view
         case .spin(let style):
             let view = UIActivityIndicatorView(style: style)
+            if let color { view.color = color }
             view.startAnimating()
             return view
         case .custom(let image):
