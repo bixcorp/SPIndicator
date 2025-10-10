@@ -28,12 +28,12 @@ import UIKit
  
  For change duration, check method `present` and pass duration and other specific property if need customise.
  
- Here available set window on which shoud be present.
- If you have some windows, you shoud configure it. Check property `presentWindow`.
- 
+ Here available set window on which should be present.
+ If you have some windows, you should configure it. Check property `presentWindow`.
+
  For disable dismiss by drag, check property `.dismissByDrag`.
  
- Recomended call `SPIndicator` and choose style func.
+ Recommended call `SPIndicator` and choose style func.
  */
 @available(iOSApplicationExtension, unavailable)
 open class SPIndicatorView: UIView {
@@ -46,14 +46,14 @@ open class SPIndicatorView: UIView {
     
     /**
      SPIndicator: Change it for set `top` or `bottom` present side.
-     Shoud be change before present, instead of no effect.
+     Should be change before present, instead of no effect.
      */
     open var presentSide: SPIndicatorPresentSide = .top
     
     /**
      SPIndicator: By default allow drag indicator for hide.
      While indicator is dragging, dismiss not work.
-     This behaviar can be disabled.
+     This behaviour can be disabled.
      */
     open var dismissByDrag: Bool = true {
         didSet {
@@ -171,7 +171,7 @@ open class SPIndicatorView: UIView {
         layer.shadowOffset = .init(width: 0, height: 7)
         layer.shadowRadius = 40
         
-        // Not use render shadow becouse backgorund is visual effect.
+        // Not use render shadow because background is visual effect.
         // If turn on it, background will hide.
         // layer.shouldRasterize = true
     }
