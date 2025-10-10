@@ -166,8 +166,8 @@ open class SPIndicatorView: UIView {
     }
     
     private func setShadow() {
-        layer.shadowOpacity = 0.22
         layer.shadowColor = UIColor.label.cgColor
+        layer.shadowOpacity = 0.42
         layer.shadowOffset = .init(width: 0, height: 7)
         layer.shadowRadius = 40
         
@@ -423,7 +423,14 @@ open class SPIndicatorView: UIView {
         
         return .init(width: width, height: areaHeight)
     }
-    
+
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        // Update background color.
+        layer.shadowColor = UIColor.label.cgColor
+    }
+
     open override func layoutSubviews() {
         super.layoutSubviews()
         
