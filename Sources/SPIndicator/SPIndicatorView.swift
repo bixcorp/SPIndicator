@@ -73,13 +73,7 @@ open class SPIndicatorView: UIView {
     open var iconView: UIView?
     
     private lazy var backgroundView: UIVisualEffectView = {
-        let view: UIVisualEffectView = {
-            if #available(iOS 13.0, *) {
-                return UIVisualEffectView(effect: UIBlurEffect(style: .systemThickMaterial))
-            } else {
-                return UIVisualEffectView(effect: UIBlurEffect(style: .light))
-            }
-        }()
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThickMaterial))
         view.isUserInteractionEnabled = false
         return view
     }()
@@ -144,7 +138,7 @@ open class SPIndicatorView: UIView {
             string: text, attributes: [.paragraphStyle: style]
         )
         label.textAlignment = .center
-        label.textColor = UIColor.Compability.label.withAlphaComponent(0.6)
+        label.textColor = UIColor.secondaryLabel
         titleLabel = label
         addSubview(label)
     }
@@ -160,7 +154,7 @@ open class SPIndicatorView: UIView {
             string: text, attributes: [.paragraphStyle: style]
         )
         label.textAlignment = .center
-        label.textColor = UIColor.Compability.label.withAlphaComponent(0.3)
+        label.textColor = UIColor.tertiaryLabel
         subtitleLabel = label
         addSubview(label)
     }
@@ -172,8 +166,8 @@ open class SPIndicatorView: UIView {
     }
     
     private func setShadow() {
-        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.22
+        layer.shadowColor = UIColor.label.cgColor
         layer.shadowOffset = .init(width: 0, height: 7)
         layer.shadowRadius = 40
         

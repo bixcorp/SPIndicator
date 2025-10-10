@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "SPIndicator",
     platforms: [
-        .iOS(.v12), .tvOS(.v12)
+        .iOS(.v13), .tvOS(.v13)
     ],
     products: [
         .library(

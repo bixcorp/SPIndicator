@@ -23,7 +23,6 @@ import SwiftUI
 
 #if os(iOS)
 
-@available(iOS 13.0, *)
 @available(iOSApplicationExtension, unavailable)
 
 extension View {
